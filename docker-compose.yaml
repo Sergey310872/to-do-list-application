@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  app:
+    build: .
+    container_name: to-do-list-application
+    ports:
+      - '8080:8080'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://192.168.0.105:5433/codekitchen
+      - SPRING_DATASOURCE_USERNAME=codekitchen
+      - SPRING_DATASOURCE_PASSWORD=123
