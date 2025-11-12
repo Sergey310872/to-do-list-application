@@ -8,7 +8,7 @@ RUN mvn -q -DskipTests package
 
 FROM openjdk:21-ea-1-jdk
 
-WORKDIR /app/java
+#WORKDIR /app/java
 #WORKDIR /app
 
 COPY --from=build /app/target/*.jar ToDoList.jar
