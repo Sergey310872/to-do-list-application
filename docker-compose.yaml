@@ -7,9 +7,12 @@ services:
     ports:
       - '8080:8080'
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://127.0.0.1:5433/codekitchen
-      - SPRING_DATASOURCE_USERNAME=codekitchen
-      - SPRING_DATASOURCE_PASSWORD=123
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://172.17.0.0:5432/codekitchen
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/codekitchen
+      SPRING_DATASOURCE_USERNAME: codekitchen
+      SPRING_DATASOURCE_PASSWORD: 123
+    networks:
+      - app-network
     depends_on:
       - db
 
@@ -19,6 +22,12 @@ services:
     ports:
       - '5433:5432'
     environment:
-      - POSTGRES_DB=codekitchen
-      - POSTGRES_USER=codekitchen
-      - POSTGRES_PASSWORD=123
+      POSTGRES_DB: codekitchen
+      POSTGRES_USER: codekitchen
+      POSTGRES_PASSWORD: 123
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
